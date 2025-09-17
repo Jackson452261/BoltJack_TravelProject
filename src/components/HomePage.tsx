@@ -27,8 +27,8 @@ const HomePage = () => {
   const blogPosts = [
     {
       id: 1,
-      title: "東南亞的隱藏寶藏",
-      excerpt: "探索那些鮮為人知、卻能徹底改變你旅行觀點的驚艷目的地。",
+      title: "東南亞馬來西亞",
+      excerpt: "探索馬來西亞雪邦賽道",
       image: "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275375/30_bkwntz.png",
       category: "冒險",
       date: "2024年12月15日",
