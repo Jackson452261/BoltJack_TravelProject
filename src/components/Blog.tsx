@@ -145,8 +145,8 @@ const Blog = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* SEO Head */}
       <SEOHead
-        title="部落格 - Kevin旅遊"
-        description="瀏覽Kevin的旅遊部落格文章，包含東南亞、歐洲、日本等地的旅行指南、美食文化和攝影作品。"
+        title="部落格 - Jack旅遊"
+        description="Jack旅遊"
         keywords="旅遊部落格, 部落格文章, 旅行指南, Kevin旅遊"
         image="https://kevintravelsite.netlify.app/Logo.png"
         url="https://kevintravelsite.netlify.app/blog"

@@ -64,11 +64,10 @@ const Contact: React.FC = () => {
     <div className="min-h-screen bg-gray-50 py-16">
       {/* SEO Head */}
       <SEOHead
-        title="聯絡我們 - Kevin旅遊"
-        description="與Kevin旅遊團隊聯絡，分享您的旅行故事或獲取旅遊建議。我們很樂意聽到您的想法！"
-        keywords="聯絡我們, Kevin旅遊, 旅遊諮詢, 聯絡表單"
-        image="https://kevintravelsite.netlify.app/Logo.png"
-        url="https://kevintravelsite.netlify.app/contact"
+        title="聯絡我們 - Jack旅遊"
+      
+       
+        
         type="website"
       />
       

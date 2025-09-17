@@ -10,11 +10,11 @@ interface SEOHeadProps {
 }
 
 const SEOHead = ({ 
-  title = "Kevin旅遊 - 探索世界各地旅行指南與攝影作品",
-  description = "Kevin的旅遊部落格，分享旅行。",
+  title = "Jack旅遊",
+  description = "Jack旅遊",
   keywords = "旅遊部落格, 旅行指南,",
-  image = "https://kevintravelsite.netlify.app/Logo.png",
-  url = "https://kevintravelsite.netlify.app/",
+  image = " ",
+  url = " ",
   type = "website"
 }: SEOHeadProps) => {
   
