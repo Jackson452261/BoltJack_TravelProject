@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import { MapPin, Phone, Mail, Clock,Check, Facebook, Twitter, Instagram, Copy } from "lucide-react";
 import { Link } from "react-router-dom";
 import SEOHead from './SEOHead';
+import Navbar from "./Navbar";
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -70,7 +71,7 @@ const Contact: React.FC = () => {
         
         type="website"
       />
-      
+              <Navbar />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">

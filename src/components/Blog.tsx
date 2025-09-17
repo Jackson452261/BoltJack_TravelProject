@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Star, Calendar, Clock, ArrowRight } from 'lucide-react';
 import { ArrowLeft } from 'lucide-react';
 import SEOHead from './SEOHead';
+import Navbar from './Navbar';
 
 // 部落格文章資料
 const blogPosts = [
@@ -141,7 +142,8 @@ const blogPosts = [
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  return (
+  return ( 
+   
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* SEO Head */}
       <SEOHead
@@ -152,10 +154,10 @@ const Blog = () => {
         url="https://kevintravelsite.netlify.app/blog"
         type="website"
       />
-
+  <Navbar />
 <Link 
   to="/" 
-  className="flex items-center space-x-3 group mb-8"
+  className="flex items-center space-x-3 group mt-32"
 >
   <ArrowLeft className="h-8 w-8 text-sky-600 group-hover:text-sky-800 transition-colors" />
   <h2 className="text-4xl font-bold text-gray-900 mb-0">
