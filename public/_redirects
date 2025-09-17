@@ -1,0 +1,19 @@
+# Netlify redirects for SPA routing
+/*    /index.html   200
+
+# Specific redirects for better SEO
+/blog/1    /index.html   200
+/blog/2    /index.html   200
+/blog/3    /index.html   200
+/blog/4    /index.html   200
+/blog/5    /index.html   200
+/blog/6    /index.html   200
+/blog/7    /index.html   200
+/blog/8    /index.html   200
+/blog/9    /index.html   200
+/blog/10   /index.html   200
+/blog/11   /index.html   200
+/blog/12   /index.html   200
+/blog/13   /index.html   200
+/blog      /index.html   200
+/contact   /index.html   200
