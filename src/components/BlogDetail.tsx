@@ -164,17 +164,19 @@ const Images = ({ imgIndex, images }) => {
             onContextMenu={(e) => e.preventDefault()} // 禁止右鍵
             animate={{ scale: imgIndex === idx ? 0.95 : 0.85 }}
             transition={SPRING_OPTIONS}
-            className="aspect-video w-full shrink-0 bg-neutral-800 flex items-center justify-center overflow-hidden rounded-lg"
+            className="aspect-video w-full shrink-0 bg-neutral-800 flex items-center justify-center rounded-lg"
           >
             {isVideo ? (
               <video
                 src={imgSrc}
                 controls
-                width="400"
-                height="300"
-                className="rounded-lg"
+                controlsList="nodownload"
+                className="rounded-lg w-full max-w-sm sm:max-w-md md:max-w-lg h-64 sm:h-72 md:h-80"
                 preload="metadata"
-                style={{ maxWidth: '100%', height: 'auto' }}
+                style={{ 
+                  maxWidth: '100%',
+                  objectFit: 'contain'
+                }}
               />
             ) : (
               <div
