@@ -19,11 +19,11 @@ const blogPosts = [
     },
     {
       id: 2,
-      title: "歐洲美食市集：一場味蕾之旅",
-      excerpt: "從巴塞隆納的博克利亞市場到伊斯坦堡的大巴扎，探索最具活力的美食文化。",
-      image: "https://images.pexels.com/photos/1002543/pexels-photo-1002543.jpeg?auto=compress&cs=tinysrgb&w=800",
+      title: "2025萬博",
+      excerpt: "2025大阪萬博的無人機秀是一場結合燈光、音響與無人機編隊演出的視覺饗宴，將在夜間上演，並可能串聯全球願望來打造「希望之樹」意象。",
+      image: "https://res.cloudinary.com/dtbj43yha/image/upload/v1759930616/20250927_184037_fo58wb.jpg",
       category: "美食與文化",
-      date: "2024年12月12日",
+      date: "2025年9月27日",
       readTime: "閱讀時間 6 分鐘",
       rating: 4.8
     },

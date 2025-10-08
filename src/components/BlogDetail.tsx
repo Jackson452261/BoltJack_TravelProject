@@ -73,10 +73,11 @@ const blogCarousels = {
 
   ],
   2: [
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747273622/38_niycxo.png",
- "https://res.cloudinary.com/dtbj43yha/image/upload/v1747273620/39_bxtifz.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747273620/37_t8fp1x.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747273606/35_rfqzaz.png",
+    "https://res.cloudinary.com/dtbj43yha/video/upload/v1759929912/20250927_194223_wtq7me.mp4",
+    "https://res.cloudinary.com/dtbj43yha/video/upload/v1759931179/20250927_194334_hgztac.mp4",
+    "https://res.cloudinary.com/dtbj43yha/video/upload/v1759931228/20250927_194407_x2h4fe.mp4",
+    "https://res.cloudinary.com/dtbj43yha/video/upload/v1759931285/20250927_194443_grpnss.mp4"
+  
   ],
   3: [
     "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=900&q=80",
@@ -133,7 +134,7 @@ const SwipeCarousel = ({ images }) => {
   };
 
   return (
-    <div className="relative overflow-hidden bg-neutral-950 py-8">
+    <div className="relative overflow-hidden bg-neutral-950 py-4 h-50">
       <motion.div
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
@@ -154,20 +155,40 @@ const SwipeCarousel = ({ images }) => {
 const Images = ({ imgIndex, images }) => {
   return (
     <>
-      {images.map((imgSrc, idx) => (
-        <motion.div
-          key={idx}
-          onContextMenu={(e) => e.preventDefault()} // 禁止右鍵
-          style={{
-            backgroundImage: `url(${imgSrc})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          animate={{ scale: imgIndex === idx ? 0.95 : 0.85 }}
-          transition={SPRING_OPTIONS}
-          className="aspect-video w-full shrink-0 bg-neutral-800 object-cover"
-        />
-      ))}
+      {images.map((imgSrc, idx) => {
+        const isVideo = imgSrc.includes('.mp4') || imgSrc.includes('video/upload');
+        
+        return (
+          <motion.div
+            key={idx}
+            onContextMenu={(e) => e.preventDefault()} // 禁止右鍵
+            animate={{ scale: imgIndex === idx ? 0.95 : 0.85 }}
+            transition={SPRING_OPTIONS}
+            className="aspect-video w-full shrink-0 bg-neutral-800 flex items-center justify-center overflow-hidden rounded-lg"
+          >
+            {isVideo ? (
+              <video
+                src={imgSrc}
+                controls
+                width="400"
+                height="300"
+                className="rounded-lg"
+                preload="metadata"
+                style={{ maxWidth: '100%', height: 'auto' }}
+              />
+            ) : (
+              <div
+                style={{
+                  backgroundImage: `url(${imgSrc})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+                className="w-full h-full"
+              />
+            )}
+          </motion.div>
+        );
+      })}
     </>
   );
 };
@@ -498,7 +519,7 @@ const BlogDetail = () => {
       {/* Carousel Section */}
       <SwipeCarousel images={blogCarousels[id] || blogCarousels[1]} />
       {/* Hero Section */}
-      <section className="relative h-96 mt-16">
+      <section className="relative h-96 ">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${post.image})` }}
