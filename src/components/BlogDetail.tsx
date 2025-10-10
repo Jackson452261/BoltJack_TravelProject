@@ -14,211 +14,9 @@ import {
   Instagram,
   Youtube
 } from 'lucide-react';
-import { motion, useMotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 import SEOHead from './SEOHead';
 
-// Unsplash carousel images per blog id (for demo)
-const blogCarousels = {
-  1: [
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1749265985/IMG_5722_11zon_uwzvls.jpg",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1749265975/IMG_5720_11zon_lqnjoq.jpg",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1749265975/IMG_5721_11zon_nrpij0.jpg",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1749265674/IMG_5777_11zon_tc0x5z.jpg",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1749265674/IMG_5776_11zon_qvqtrb.jpg",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1749265674/IMG_5775_11zon_snkgmo.jpg",
-    "hhttps://res.cloudinary.com/dtbj43yha/image/upload/v1749265395/IMG_5704_11zon_xx8i6f.jpg",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1749265389/IMG_5703_11zon_aqwyuk.jpg",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1749265388/IMG_5702_11zon_nfhajj.jpg",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275416/6_kshlu2.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275415/7_zxxkm5.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275414/5_z4awqa.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275407/37_iqsazy.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275414/5_z4awqa.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275407/37_iqsazy.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275404/38_eft5eg.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275400/36_alvw5f.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275396/34_e5rrvn.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275388/3_pgvmls.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275387/4_dw4gyr.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275386/2_ugw1n4.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275386/39_lqohrd.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275386/1_n00ymg.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275385/35_wgoj1z.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275380/32_ufdqhd.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275377/33_gm0zxm.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275375/31_qixkga.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275375/30_bkwntz.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275375/29_cgr3ku.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275303/13_sjx6tp.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275303/8_h85kpz.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275302/9_uy2tbg.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275299/10_ogh5nm.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275296/27_fvhgit.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275296/28_w9ucrr.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275295/26_dgc3hf.png",
-
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275295/25_gjp2p1.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275294/24_mca8dc.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275294/23_kfnaxb.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275292/22_dkznhn.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275289/18_smcqy9.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275289/17_ckmv9a.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275288/16_vygka0.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275286/15_rjc4ni.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275285/14_zstcwl.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275282/12_tobz9a.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275281/11_mzoy57.png"
-
-
-
-  ],
-  2: [
-    "https://res.cloudinary.com/dtbj43yha/video/upload/v1759929912/20250927_194223_wtq7me.mp4",
-    "https://res.cloudinary.com/dtbj43yha/video/upload/v1759931179/20250927_194334_hgztac.mp4",
-    "https://res.cloudinary.com/dtbj43yha/video/upload/v1759931228/20250927_194407_x2h4fe.mp4",
-    "https://res.cloudinary.com/dtbj43yha/video/upload/v1759931285/20250927_194443_grpnss.mp4"
-  
-  ],
-  3: [
-    "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=900&q=80",
-    "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=900&q=80",
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80",
-    "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=900&q=80",
-  ],
-
-  4: [
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747273622/38_niycxo.png",
- "https://res.cloudinary.com/dtbj43yha/image/upload/v1747273620/39_bxtifz.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747273620/37_t8fp1x.png",
-    "https://res.cloudinary.com/dtbj43yha/image/upload/v1747273606/35_rfqzaz.png",
-  ],
-  // Add more ids as needed
-};
-
-const ONE_SECOND = 1000;
-const AUTO_DELAY = ONE_SECOND * 10;
-const DRAG_BUFFER = 50;
-const SPRING_OPTIONS = {
-  type: "spring",
-  mass: 3,
-  stiffness: 400,
-  damping: 50,
-};
-
-const SwipeCarousel = ({ images }) => {
-  const [imgIndex, setImgIndex] = useState(0);
-  const dragX = useMotionValue(0);
-
-  useEffect(() => {
-    const intervalRef = setInterval(() => {
-      const x = dragX.get();
-      if (x === 0) {
-        setImgIndex((pv) => {
-          if (pv === images.length - 1) {
-            return 0;
-          }
-          return pv + 1;
-        });
-      }
-    }, AUTO_DELAY);
-    return () => clearInterval(intervalRef);
-  }, [images, dragX]);
-
-  const onDragEnd = () => {
-    const x = dragX.get();
-    if (x <= -DRAG_BUFFER && imgIndex < images.length - 1) {
-      setImgIndex((pv) => pv + 1);
-    } else if (x >= DRAG_BUFFER && imgIndex > 0) {
-      setImgIndex((pv) => pv - 1);
-    }
-  };
-
-  return (
-    <div className="relative overflow-hidden bg-neutral-950 py-4 h-50">
-      <motion.div
-        drag="x"
-        dragConstraints={{ left: 0, right: 0 }}
-        style={{ x: dragX }}
-        animate={{ translateX: `-${imgIndex * 100}%` }}
-        transition={SPRING_OPTIONS}
-        onDragEnd={onDragEnd}
-        className="flex cursor-grab items-center active:cursor-grabbing w-full"
-      >
-        <Images imgIndex={imgIndex} images={images} />
-      </motion.div>
-      <Dots imgIndex={imgIndex} setImgIndex={setImgIndex} images={images} />
-      <GradientEdges />
-    </div>
-  );
-};
-
-const Images = ({ imgIndex, images }) => {
-  return (
-    <>
-      {images.map((imgSrc, idx) => {
-        const isVideo = imgSrc.includes('.mp4') || imgSrc.includes('video/upload');
-        
-        return (
-          <motion.div
-            key={idx}
-            onContextMenu={(e) => e.preventDefault()} // 禁止右鍵
-            animate={{ scale: imgIndex === idx ? 0.95 : 0.85 }}
-            transition={SPRING_OPTIONS}
-            className="aspect-video w-full shrink-0 bg-neutral-800 flex items-center justify-center rounded-lg"
-          >
-            {isVideo ? (
-              <video
-                src={imgSrc}
-                controls
-                controlsList="nodownload"
-                className="rounded-lg w-full max-w-sm sm:max-w-md md:max-w-lg h-64 sm:h-72 md:h-80"
-                preload="metadata"
-                style={{ 
-                  maxWidth: '100%',
-                  objectFit: 'contain'
-                }}
-              />
-            ) : (
-              <div
-                style={{
-                  backgroundImage: `url(${imgSrc})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-                className="w-full h-full"
-              />
-            )}
-          </motion.div>
-        );
-      })}
-    </>
-  );
-};
-
-const Dots = ({ imgIndex, setImgIndex, images }) => {
-  return (
-    <div className="mt-4 flex w-full justify-center gap-2">
-      {images.map((_, idx) => (
-        <button
-          key={idx}
-          onClick={() => setImgIndex(idx)}
-          className={`h-3 w-3 rounded-full transition-colors ${
-            idx === imgIndex ? "bg-neutral-50" : "bg-neutral-500"
-          }`}
-        />
-      ))}
-    </div>
-  );
-};
-
-const GradientEdges = () => {
-  return (
-    <>
-      <div className="pointer-events-none absolute bottom-0 left-0 top-0 w-[10vw] max-w-[100px] bg-gradient-to-r from-neutral-950/50 to-neutral-950/0" />
-      <div className="pointer-events-none absolute bottom-0 right-0 top-0 w-[10vw] max-w-[100px] bg-gradient-to-l from-neutral-950/50 to-neutral-950/0" />
-    </>
-  );
-};
 
 const BlogDetail = () => {
   const { id } = useParams();
@@ -257,32 +55,67 @@ const BlogDetail = () => {
     },
     {
       id: 2,
-      title: "歐洲美食市集：一場味蕾之旅",
-      excerpt: "從巴塞隆納的博克利亞市場到伊斯坦堡的大巴扎，探索最具活力的美食文化。",
+      title: "2025大阪萬博Expo無人機表演",
+      excerpt: "從無人機「生命之樹」造型",
       image: "https://images.pexels.com/photos/1002543/pexels-photo-1002543.jpeg?auto=compress&cs=tinysrgb&w=800",
-      category: "美食與文化",
-      date: "2024年12月12日",
+      category: "",
+      date: "2025年09月27日",
       readTime: "閱讀時間 6 分鐘",
       rating: 4.8,
       author: "Sarah Martinez",
       authorImage: "https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=100&q=80",
       content: `
-        <p>歐洲的傳統市集是體驗當地文化最直接的方式。這些充滿活力的市場不僅提供新鮮的食材，更是社區生活的中心，承載著數百年的歷史與傳統。</p>
+        <p>參與無人機數量： 約 2,500 架
+
+其中 1,749 架無人機 組成了「巨大的樹」造型，象徵「生命、連結與再生」。</p>
         
-        <h2>巴塞隆納博克利亞市場</h2>
-        <p>位於蘭布拉大道上的博克利亞市場是巴塞隆納最著名的市場之一。這裡有超過300個攤位，從新鮮海鮮到加泰隆尼亞特色小食，應有盡有。</p>
-        
-        <h2>伊斯坦堡大巴扎</h2>
-        <p>大巴扎是世界上最古老、最大的室內市場之一。在這個迷宮般的市場中，你可以找到土耳其軟糖、香料、地毯和各種手工藝品。</p>
-        
-        <h2>市集探索小貼士</h2>
-        <ul>
-          <li>早上前往：避開人潮，食材最新鮮</li>
-          <li>帶現金：許多攤位不接受信用卡</li>
-          <li>學會討價還價：這是市集文化的一部分</li>
-          <li>品嚐當地特色：不要害怕嘗試新食物</li>
-        </ul>
-      `
+        <div style="margin: 20px 0; text-align: center;">
+          <video 
+            src="https://res.cloudinary.com/dtbj43yha/video/upload/v1759931179/20250927_194334_hgztac.mp4" 
+            controls 
+            style="width: 100%; max-width: 800px; height: 500px; border-radius: 8px;"
+            preload="metadata"
+          >
+            您的瀏覽器不支援影片播放。
+          </video>
+        </div>
+        <div style="margin: 20px 0; text-align: center;">
+          <video 
+            src="https://res.cloudinary.com/dtbj43yha/video/upload/v1759931228/20250927_194407_x2h4fe.mp4" 
+            controls 
+            style="width: 100%; max-width: 800px; height: 500px; border-radius: 8px;"
+            preload="metadata"
+          >
+            您的瀏覽器不支援影片播放。
+          </video>
+        </div>
+
+       
+
+          <div style="margin: 20px 0; text-align: center;">
+          <video 
+            src="https://res.cloudinary.com/dtbj43yha/video/upload/v1759931285/20250927_194443_grpnss.mp4" 
+            controls 
+            style="width: 100%; max-width: 800px; height: 500px; border-radius: 8px;"
+            preload="metadata"
+          >
+            您的瀏覽器不支援影片播放。
+          </video>
+
+          <p> 第二幕：《人》（Humanity）
+→ 無人機組成巨大人形，象徵人類誕生與創造力的覺醒。</p>
+
+ <video 
+            src="https://res.cloudinary.com/dtbj43yha/video/upload/v1759929912/20250927_194223_wtq7me.mp4" 
+            controls 
+            style="width: 100%; max-width: 800px; height: 500px; border-radius: 8px;"
+            preload="metadata"
+          >
+            您的瀏覽器不支援影片播放。
+          </video>
+
+        </div>
+      ` 
     },
     {
       id: 3,
@@ -518,8 +351,6 @@ const BlogDetail = () => {
         </div>
       </nav>
 
-      {/* Carousel Section */}
-      <SwipeCarousel images={blogCarousels[id] || blogCarousels[1]} />
       {/* Hero Section */}
       <section className="relative h-96 ">
         <div 
