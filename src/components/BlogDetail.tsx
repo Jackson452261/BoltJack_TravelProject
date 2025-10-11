@@ -57,7 +57,7 @@ const BlogDetail = () => {
       id: 2,
       title: "2025大阪萬博Expo無人機表演",
       excerpt: "從無人機「生命之樹」造型",
-      image: "https://images.pexels.com/photos/1002543/pexels-photo-1002543.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "https://res.cloudinary.com/dtbj43yha/image/upload/v1759930616/20250927_184037_fo58wb.jpg",
       category: "",
       date: "2025年09月27日",
       readTime: "閱讀時間 6 分鐘",
@@ -73,8 +73,10 @@ const BlogDetail = () => {
           <video 
             src="https://res.cloudinary.com/dtbj43yha/video/upload/v1759931179/20250927_194334_hgztac.mp4" 
             controls 
-            style="width: 100%; max-width: 800px; height: 500px; border-radius: 8px;"
+            style="width: 100%; max-width: 400px; height:  auto; border-radius: 8px; object-fit: contain;"
             preload="metadata"
+            controlsList="nodownload"
+            playsInline
           >
             您的瀏覽器不支援影片播放。
           </video>
@@ -83,8 +85,10 @@ const BlogDetail = () => {
           <video 
             src="https://res.cloudinary.com/dtbj43yha/video/upload/v1759931228/20250927_194407_x2h4fe.mp4" 
             controls 
-            style="width: 100%; max-width: 800px; height: 500px; border-radius: 8px;"
+            style="width: 100%; max-width: 400px; height: auto; border-radius: 8px; object-fit: contain;"
             preload="metadata"
+            controlsList="nodownload"
+            playsInline
           >
             您的瀏覽器不支援影片播放。
           </video>
@@ -96,8 +100,10 @@ const BlogDetail = () => {
           <video 
             src="https://res.cloudinary.com/dtbj43yha/video/upload/v1759931285/20250927_194443_grpnss.mp4" 
             controls 
-            style="width: 100%; max-width: 800px; height: 500px; border-radius: 8px;"
+            style="width: 100%; max-width: 400px; height: auto; border-radius: 8px; object-fit: contain;"
             preload="metadata"
+            controlsList="nodownload"
+            playsInline
           >
             您的瀏覽器不支援影片播放。
           </video>
@@ -108,8 +114,10 @@ const BlogDetail = () => {
  <video 
             src="https://res.cloudinary.com/dtbj43yha/video/upload/v1759929912/20250927_194223_wtq7me.mp4" 
             controls 
-            style="width: 100%; max-width: 800px; height: 500px; border-radius: 8px;"
+            style="width: 100%; max-width: 400px; height: auto; border-radius: 8px; object-fit: contain;"
             preload="metadata"
+            controlsList="nodownload"
+            playsInline
           >
             您的瀏覽器不支援影片播放。
           </video>
@@ -321,6 +329,58 @@ const BlogDetail = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Custom CSS for video fullscreen handling */}
+      <style>{`
+        video:fullscreen {
+          width: 100vw !important;
+          height:  auto !important;
+          object-fit: cover !important;
+          background: black;
+          transform: rotate(90deg) !important;
+          transform-origin: center !important;
+        }
+        video:-webkit-full-screen {
+          width: 100vw !important;
+          height: auto !important;
+          object-fit: cover !important;
+          background: black;
+          transform: rotate(90deg) !important;
+          transform-origin: center !important;
+        }
+        video:-moz-full-screen {
+          width: 100vw !important;
+          height: auto !important;
+          object-fit: cover !important;
+          background: black;
+          transform: rotate(90deg) !important;
+          transform-origin: center !important;
+        }
+        video:-ms-fullscreen {
+          width: 100vw !important;
+          height: auto !important;
+          object-fit: cover !important;
+          background: black;
+          transform: rotate(90deg) !important;
+          transform-origin: center !important;
+        }
+        
+        /* Alternative approach for better mobile compatibility */
+        @media screen and (orientation: landscape) {
+          video:fullscreen {
+            transform: none !important;
+          }
+          video:-webkit-full-screen {
+            transform: none !important;
+          }
+          video:-moz-full-screen {
+            transform: none !important;
+          }
+          video:-ms-fullscreen {
+            transform: none !important;
+          }
+        }
+      `}</style>
+      
       {/* SEO Head */}
       <SEOHead
         title={`${post.title} - Kevin旅遊`}
