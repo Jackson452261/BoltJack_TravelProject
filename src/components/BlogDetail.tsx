@@ -21,40 +21,102 @@ import SEOHead from './SEOHead';
 const BlogDetail = () => {
   const { id } = useParams();
 
+  // Prevent right-click on all images
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => {
+      if ((e.target as HTMLElement).tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+      }
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu);
+    
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+    };
+  }, []);
+
   // Blog posts data (same as in HomePage)
   const blogPosts = [
     {
       id: 1,
-      title: "東南亞的隱藏寶藏",
-      excerpt: "探索那些鮮為人知、卻能徹底改變你旅行觀點的驚艷目的地。",
+      title: "2023馬來西亞MotoGp",
+      excerpt: "位於馬來西亞雪蘭莪州雪邦的一座動力運動賽車場，十分臨近同樣位於雪邦的吉隆坡國際機場。",
       image: "https://res.cloudinary.com/dtbj43yha/image/upload/v1747275375/30_bkwntz.png",
       category: "冒險",
-      date: "2024年12月15日",
+      date: "2023年11月12日",
       readTime: "閱讀時間 8 分鐘",
       rating: 4.9,
       author: "Kevin Chen",
-      authorImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80",
+      authorImage: "",    
       content: `
-        <p>東南亞擁有許多令人驚嘆的隱藏寶藏，等待著勇敢的探險者去發現。從泰國北部的秘密瀑布到越南中部的古老洞穴，這些目的地將徹底改變你對旅行的看法。</p>
+                <h2 style="font-size: 28px; font-weight: bold;">Alexmarquez73</h2>
+        <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756132852/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2_2025-08-25_224404_u37xjz.png" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+       
+        <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756132850/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2_2025-08-25_224408_vtet71.png" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+        <h2 style="font-size: 28px; font-weight: bold;"> Jorgemartin89</h2>
+        <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756132612/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2_2025-08-25_224011_lqaeln.png" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+        <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756132612/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2_2025-08-25_224020_xk6h7m.png" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+        <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756132611/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2_2025-08-25_224034_hc6vjc.png" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+        <h2 style="font-size: 28px; font-weight: bold;">Francesco Bagnaia</h2>
+ 
+        <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756132234/IMG_5755_rpxbgx.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
         
-        <h2>泰國北部的秘密瀑布</h2>
-        <p>在清邁附近的山區，隱藏著一些當地人才知道的美麗瀑布。這些瀑布不僅景色壯觀，更重要的是遠離觀光人潮，讓你能夠真正感受大自然的寧靜。</p>
+        <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756132234/IMG_5756_a98bdb.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
         
-        <h2>越南中部的古老洞穴</h2>
-        <p>峰牙-己榜國家公園內的洞穴系統是世界上最壯觀的地下奇觀之一。這裡的石灰岩地形經過數百萬年的侵蝕，形成了令人嘆為觀止的地下河流和鐘乳石洞。</p>
-        
-        <h2>實用旅行建議</h2>
-        <ul>
-          <li>最佳旅行時間：11月至3月，天氣涼爽乾燥</li>
-          <li>必備裝備：防水背包、舒適的徒步鞋、頭燈</li>
-          <li>當地導遊：強烈建議聘請當地導遊，確保安全並深入了解文化</li>
-        </ul>
-        
-        <p>這些隱藏的寶藏不僅提供了絕佳的攝影機會，更重要的是讓你體驗到真正的冒險精神。記住，最美的風景往往在人跡罕至的地方等待著你。</p>
-      `
-    },
+        <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756132234/IMG_5754_s6mk8f.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+      
+             
+
+        <h2 style="font-size: 28px; font-weight: bold;"> Marc Márquez</h2>
+       <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756130851/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2_2025-08-25_221040_mpwtl2.png" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+       <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756130850/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2_2025-08-25_221055_nsqbpq.png" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+      <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1749265674/IMG_5775_11zon_snkgmo.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+        <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1749265389/IMG_5703_11zon_aqwyuk.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+      <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1749265674/IMG_5776_11zon_qvqtrb.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+       
+
+      <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1749265674/IMG_5777_11zon_tc0x5z.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+      
+      
+      
+       `},
     {
       id: 2,
+      title: "2024日本Motogp",
+      excerpt: "Mobility Resort Motegi賽道位於茂木町日本栃木縣",
+      image: "https://res.cloudinary.com/dtbj43yha/image/upload/v1761663364/20241006_134556_o1dbrl.jpg",
+      category: "",
+      date: "2024年10月06日",
+      readTime: "閱讀時間 6 分鐘",
+      rating: 4.8,
+      author: "Sarah Martinez",
+      authorImage: "https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=100&q=80",
+      content: `
+         
+
+         <h2 style="font-size: 28px; font-weight: bold;"> Marc Márquez</h2>
+       <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1747273620/37_t8fp1x.png" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+
+
+
+      `},
+    {
+      id: 3,
       title: "2025大阪萬博Expo無人機表演",
       excerpt: "從無人機「生命之樹」造型",
       image: "https://res.cloudinary.com/dtbj43yha/image/upload/v1759930616/20250927_184037_fo58wb.jpg",
@@ -125,190 +187,7 @@ const BlogDetail = () => {
         </div>
       ` 
     },
-    {
-      id: 3,
-      title: "日本單人旅行：完整指南",
-      excerpt: "自信暢遊日出之國，初次單人旅行者的必備技巧。",
-      image: "https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=800",
-      category: "單人旅行",
-      date: "2024年12月10日",
-      readTime: "閱讀時間 12 分鐘",
-      rating: 5.0,
-      author: "Takeshi Yamamoto",
-      authorImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80",
-      content: `
-        <p>日本是單人旅行者的天堂。這個國家以其安全性、便利性和對獨自旅行者的友善態度而聞名。無論你是第一次單人旅行還是經驗豐富的獨行俠，日本都能提供難忘的體驗。</p>
-        
-        <h2>為什麼選擇日本單人旅行？</h2>
-        <p>日本擁有世界上最安全的環境之一，完善的交通系統，以及對個人空間的尊重文化。這些因素使得單人旅行變得輕鬆愉快。</p>
-        
-        <h2>交通指南</h2>
-        <p>JR Pass是長途旅行的最佳選擇。在城市內，地鐵和公車系統非常發達。Google Maps在日本非常準確，是導航的好幫手。</p>
-        
-        <h2>住宿建議</h2>
-        <ul>
-          <li>膠囊旅館：經濟實惠，體驗獨特</li>
-          <li>商務旅館：舒適便利，價格合理</li>
-          <li>傳統旅館：體驗日式文化</li>
-          <li>青年旅社：結識其他旅行者</li>
-        </ul>
-        
-        <h2>文化禮儀</h2>
-        <p>了解基本的日本禮儀將讓你的旅行更加順利。記住要脫鞋進入家庭和某些餐廳，在電車上保持安靜，以及正確使用筷子。</p>
-      `
-    },
-    {
-      id: 4,
-      title: "瑞士阿爾卑斯山健行路線",
-      excerpt: "體驗令人驚嘆的高山美景，適合各種程度健行者的必訪步道。",
-      image: "https://images.pexels.com/photos/547114/pexels-photo-547114.jpeg?auto=compress&cs=tinysrgb&w=800",
-      category: "冒險",
-      date: "2024年11月28日",
-      readTime: "閱讀時間 9 分鐘",
-      rating: 4.7,
-      author: "Hans Mueller",
-      authorImage: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=80",
-      content: `
-        <p>瑞士阿爾卑斯山提供了世界上最壯觀的健行體驗。從適合初學者的湖邊步道到挑戰性的高山路線，這裡有適合每個人的健行選擇。</p>
-        
-        <h2>經典健行路線推薦</h2>
-        <p>馬特洪峰周圍的健行路線是必訪之選。從策馬特出發，你可以選擇不同難度的路線，每一條都能欣賞到令人屏息的山景。</p>
-        
-        <h2>健行準備事項</h2>
-        <ul>
-          <li>適當的健行裝備：防水外套、健行靴、背包</li>
-          <li>天氣預報：山區天氣變化快速</li>
-          <li>體能準備：提前進行體能訓練</li>
-          <li>路線規劃：選擇適合自己程度的路線</li>
-        </ul>
-        
-        <p>記住，安全永遠是第一優先。享受瑞士阿爾卑斯山的美景，但要時刻注意安全。</p>
-      `
-    },
-    {
-      id: 5,
-      title: "曼谷街頭美食",
-      excerpt: "品嚐曼谷著名街頭美食的繽紛風味。",
-      image: "https://images.pexels.com/photos/302680/pexels-photo-302680.jpeg?auto=compress&cs=tinysrgb&w=800",
-      category: "美食與文化",
-      date: "2024年11月20日",
-      readTime: "閱讀時間 5 分鐘",
-      rating: 4.9,
-      author: "Siriporn Thanakit",
-      authorImage: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80",
-      content: `
-        <p>曼谷的街頭美食文化是這座城市最吸引人的特色之一。從早晨到深夜，街頭攤販提供著各種美味且價格親民的泰式料理。</p>
-        
-        <h2>必試街頭美食</h2>
-        <p>泰式炒河粉、青木瓜沙拉、芒果糯米飯是絕對不能錯過的經典。每個攤販都有自己的秘密配方，讓同樣的菜色呈現不同的風味。</p>
-        
-        <h2>街頭美食安全小貼士</h2>
-        <ul>
-          <li>選擇人潮多的攤販</li>
-          <li>觀察食物的新鮮度</li>
-          <li>避免生食和冰塊</li>
-          <li>隨身攜帶腸胃藥</li>
-        </ul>
-      `
-    },
-    {
-      id: 6,
-      title: "冰島極光奇景",
-      excerpt: "捕捉冰島神奇極光的必備秘訣。",
-      image: "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=800",
-      category: "自然",
-      date: "2024年11月15日",
-      readTime: "閱讀時間 7 分鐘",
-      rating: 5.0,
-      author: "Erik Johansson",
-      authorImage: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80",
-      content: `
-        <p>冰島是世界上觀賞極光的最佳地點之一。這個北歐島國提供了完美的條件來欣賞這個自然界最壯觀的光影秀。</p>
-        
-        <h2>最佳觀賞時間</h2>
-        <p>9月到3月是觀賞極光的最佳季節，其中10月到2月是高峰期。需要晴朗無雲的夜晚和低光污染的環境。</p>
-        
-        <h2>攝影技巧</h2>
-        <ul>
-          <li>使用三腳架穩定相機</li>
-          <li>設定長曝光時間</li>
-          <li>調高ISO感光度</li>
-          <li>使用廣角鏡頭</li>
-        </ul>
-        
-        <p>耐心是觀賞極光最重要的品質。有時需要等待數小時，但當極光出現時，那份感動絕對值得所有的等待。</p>
-      `
-    },
-    {
-      id: 7,
-      title: "托斯卡尼葡萄酒之旅",
-      excerpt: "沉醉於義大利托斯卡尼的美酒與綿延山丘。",
-      image: "https://images.pexels.com/photos/302898/pexels-photo-302898.jpeg?auto=compress&cs=tinysrgb&w=800",
-      category: "美食與文化",
-      date: "2024年11月10日",
-      readTime: "閱讀時間 6 分鐘",
-      rating: 4.8
-    },
-    {
-      id: 8,
-      title: "探索大堡礁",
-      excerpt: "潛水者必備的世界最大珊瑚礁系統指南。",
-      image: "https://images.pexels.com/photos/189545/pexels-photo-189545.jpeg?auto=compress&cs=tinysrgb&w=800",
-      category: "冒險",
-      date: "2024年11月2日",
-      readTime: "閱讀時間 10 分鐘",
-      rating: 4.9
-    },
-    {
-      id: 9,
-      title: "48小時玩轉紐約",
-      excerpt: "如何在短短兩天充分體驗大蘋果的精彩。",
-      image: "https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=800",
-      category: "城市指南",
-      date: "2024年10月28日",
-      readTime: "閱讀時間 6 分鐘",
-      rating: 4.6
-    },
-    {
-      id: 10,
-      title: "肯亞野生動物探險",
-      excerpt: "體驗肯亞國家公園內非洲野生動物的震撼。",
-      image: "https://images.pexels.com/photos/1601761/pexels-photo-1601761.jpeg?auto=compress&cs=tinysrgb&w=800",
-      category: "野生動物",
-      date: "2024年10月20日",
-      readTime: "閱讀時間 8 分鐘",
-      rating: 5.0
-    },
-    {
-      id: 11,
-      title: "秘魯的文化奇蹟",
-      excerpt: "從馬丘比丘到在地傳統，深入探索秘魯的豐富文化。",
-      image: "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800",
-      category: "文化",
-      date: "2024年10月12日",
-      readTime: "閱讀時間 9 分鐘",
-      rating: 4.9
-    },
-    {
-      id: 12,
-      title: "加拿大滑雪勝地",
-      excerpt: "冬季愛好者必訪的加拿大最佳滑雪場。",
-      image: "https://images.pexels.com/photos/848599/pexels-photo-848599.jpeg?auto=compress&cs=tinysrgb&w=800",
-      category: "冒險",
-      date: "2024年10月5日",
-      readTime: "閱讀時間 7 分鐘",
-      rating: 4.8
-    },
-    {
-      id: 13,
-      title: "地中海郵輪指南",
-      excerpt: "享受陽光、大海與文化完美交融的地中海航程。",
-      image: "https://images.pexels.com/photos/185367/pexels-photo-185367.jpeg?auto=compress&cs=tinysrgb&w=800",
-      category: "豪華旅行",
-      date: "2024年9月28日",
-      readTime: "閱讀時間 10 分鐘",
-      rating: 4.7
-    }
+    
   ];
 
 
@@ -454,97 +333,44 @@ const BlogDetail = () => {
 
       {/* Article Content */}
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid lg:grid-cols-4 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-3">
-            {/* Author Info */}
-            <div className="flex items-center mb-8 p-6 bg-gray-50 rounded-lg">
-              <img 
-                src={post.authorImage} 
-                alt={post.author}
-                className="w-16 h-16 rounded-full object-cover mr-4"
-              />
-              <div>
-                <h3 className="font-semibold text-gray-900">{post.author}</h3>
-                <p className="text-gray-600">Travel Writer & Photographer</p>
-                <p className="text-sm text-gray-500 mt-1">Published on {post.date}</p>
-              </div>
-            </div>
-
-            {/* Article Body */}
-            <div 
-              className="prose prose-lg max-w-none"
-              dangerouslySetInnerHTML={{ __html: post.content }}
+        {/* Main Content - Centered */}
+        <div className="max-w-3xl mx-auto">
+          {/* Author Info */}
+          <div className="flex items-center mb-8 p-6 bg-gray-50 rounded-lg">
+            <img 
+              src={post.authorImage} 
+              alt={post.author}
+              className="w-16 h-16 rounded-full object-cover mr-4"
             />
-
-            {/* Social Share */}
-            <div className="mt-12 pt-8 border-t border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Share this article</h3>
-              <div className="flex space-x-4">
-                <button className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                  <Facebook className="h-4 w-4 mr-2" />
-                  Facebook
-                </button>
-                <button className="flex items-center px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors">
-                  <Twitter className="h-4 w-4 mr-2" />
-                  Twitter
-                </button>
-                <button className="flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">
-                  <Share2 className="h-4 w-4 mr-2" />
-                  Copy Link
-                </button>
-              </div>
+            <div>
+              <h3 className="font-semibold text-gray-900">{post.author}</h3>
+              <p className="text-gray-600">Travel Writer & Photographer</p>
+              <p className="text-sm text-gray-500 mt-1">Published on {post.date}</p>
             </div>
           </div>
 
-          {/* Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-24 space-y-6">
-              {/* Action Buttons */}
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="font-semibold text-gray-900 mb-4">Quick Actions</h3>
-                <div className="space-y-3">
-                  <button className="w-full flex items-center justify-center px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors">
-                    <Heart className="h-4 w-4 mr-2" />
-                    Like Article
-                  </button>
-                  <button className="w-full flex items-center justify-center px-4 py-2 bg-sky-50 text-sky-600 rounded-lg hover:bg-sky-100 transition-colors">
-                    <Bookmark className="h-4 w-4 mr-2" />
-                    Save for Later
-                  </button>
-                </div>
-              </div>
+          {/* Article Body */}
+          <div 
+            className="prose prose-lg max-w-none"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
 
-              {/* Related Posts */}
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="font-semibold text-gray-900 mb-4">Related Posts</h3>
-                <div className="space-y-4">
-                  {blogPosts
-                    .filter(p => p.id !== post.id && p.category === post.category)
-                    .slice(0, 2)
-                    .map(relatedPost => (
-                      <Link 
-                        key={relatedPost.id}
-                        to={`/blog/${relatedPost.id}`}
-                        className="block group"
-                      >
-                        <div className="flex space-x-3">
-                          <img 
-                            src={relatedPost.image} 
-                            alt={relatedPost.title}
-                            className="w-16 h-16 object-cover rounded-lg"
-                          />
-                          <div className="flex-1">
-                            <h4 className="text-sm font-medium text-gray-900 group-hover:text-sky-600 transition-colors line-clamp-2">
-                              {relatedPost.title}
-                            </h4>
-                            <p className="text-xs text-gray-500 mt-1">{relatedPost.date}</p>
-                          </div>
-                        </div>
-                      </Link>
-                    ))}
-                </div>
-              </div>
+          {/* Social Share */}
+          <div className="mt-12 pt-8 border-t border-gray-200">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Share this article</h3>
+            <div className="flex justify-center space-x-4">
+              <button className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                <Facebook className="h-4 w-4 mr-2" />
+                Facebook
+              </button>
+              <button className="flex items-center px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors">
+                <Twitter className="h-4 w-4 mr-2" />
+                Twitter
+              </button>
+              <button className="flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">
+                <Share2 className="h-4 w-4 mr-2" />
+                Copy Link
+              </button>
             </div>
           </div>
         </div>
