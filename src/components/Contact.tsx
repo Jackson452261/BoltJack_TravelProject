@@ -78,7 +78,7 @@ const Contact: React.FC = () => {
           <div>
             <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900">聯絡我們</h1>
             <p className="mt-2 text-gray-600 max-w-2xl">
-              有問題、合作提案或想分享旅行故事？留下訊息，我們會儘快回覆。
+               想分享旅行故事？留下訊息，我們會儘快回覆。
             </p>
           </div>
           <div>
@@ -124,10 +124,10 @@ const Contact: React.FC = () => {
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-sm font-medium text-gray-900">電話</div>
-                      <div className="text-sm">+1 (555) 123-4567</div>
+                      <div className="text-sm"> </div>
                     </div>
                     <button
-                      onClick={() => handleCopy("+1 (555) 123-4567")}
+                      onClick={() => handleCopy( )}
                       aria-label="Copy phone"
                       className="ml-3 inline-flex items-center gap-1 px-2 py-1 text-xs rounded-md bg-gray-100 hover:bg-gray-200"
                     >
@@ -146,7 +146,7 @@ const Contact: React.FC = () => {
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-sm font-medium text-gray-900">電子郵件</div>
-                      <div className="text-sm">hello@wanderlustblog.com</div>
+                      <div className="text-sm"> </div>
                     </div>
                     <button
                       onClick={() => handleCopy("hello@wanderlustblog.com")}
@@ -192,7 +192,7 @@ const Contact: React.FC = () => {
               <div className="overflow-hidden rounded-lg border">
                 <iframe
                   title="location map"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019740978739!2d-122.41941508468119!3d37.77492927975992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6f3b1b2f%3A0x9a3f6b8b2b0b9a7a!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1610000000000!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462784.89496904804!2d121.1767186192811!3d25.016862969668153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ac72bce20a99%3A0x3f6a35cedd0ac2e0!2z6Ie65YyX!5e0!3m2!1szh-TW!2stw!4v1761747783310!5m2!1szh-TW!2stw"
                   className="w-full h-40"
                   loading="lazy"
                 />
