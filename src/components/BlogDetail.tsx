@@ -48,7 +48,7 @@ const BlogDetail = () => {
       date: "2023年11月12日",
       readTime: "閱讀時間 8 分鐘",
       rating: 4.9,
-      author: "Kevin Chen",
+      author: "Kevin ",
       authorImage: "",    
       content: `
                 <h2 style="font-size: 28px; font-weight: bold;">Alexmarquez73</h2>
@@ -102,7 +102,7 @@ const BlogDetail = () => {
       date: "2024年10月06日",
       readTime: "閱讀時間 6 分鐘",
       rating: 4.8,
-      author: "Sarah Martinez",
+      author: "Kevin",
       authorImage: "https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=100&q=80",
       content: `
          
@@ -110,6 +110,40 @@ const BlogDetail = () => {
          <h2 style="font-size: 28px; font-weight: bold;"> Marc Márquez</h2>
        <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1747273620/37_t8fp1x.png" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
 
+       <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1761747084/IMG_1511_v8rlki.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+       <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1761747073/IMG_1513_dfeved.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+       <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1761747074/IMG_1510_wslzhj.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+       <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1761747073/IMG_1514_jmurmp.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+
+
+       <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756212844/IMG_1998_ew87eo.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+        <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756212843/IMG_1997_kg3hdh.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+         <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756212841/IMG_1999_yedqsb.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+         <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756212384/IMG_1968_i6a4ey.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+         <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756212131/IMG_1601_ubemvm.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+
+          <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756212130/IMG_1599_yyivgm.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+              <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756212131/IMG_1600_bsbdsf.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
 
 
 
@@ -124,7 +158,7 @@ const BlogDetail = () => {
       date: "2025年09月27日",
       readTime: "閱讀時間 6 分鐘",
       rating: 4.8,
-      author: "Sarah Martinez",
+      author: "Kevin",
       authorImage: "https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=100&q=80",
       content: `
         <p>參與無人機數量： 約 2,500 架
@@ -275,7 +309,7 @@ const BlogDetail = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link to="/" className="text-2xl font-bold text-sky-600">Wanderlust</Link>
+              <Link to="/" className="text-2xl font-bold text-sky-600">Kevin攝影</Link>
             </div>
             <div className="flex items-center space-x-4">
               <Link 
@@ -283,7 +317,7 @@ const BlogDetail = () => {
                 className="flex items-center text-gray-600 hover:text-sky-600 transition-colors"
               >
                 <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Home
+                回到首頁
               </Link>
             </div>
           </div>
