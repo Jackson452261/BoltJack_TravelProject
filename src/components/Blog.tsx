@@ -50,7 +50,7 @@ const Blog = () => {
       <SEOHead
         title="部落格 - Jack旅遊"
         description="Jack旅遊"
-        keywords="旅遊部落格, 部落格文章, 旅行指南, Kevin旅遊"
+        keywords="旅遊部落格, 部落格文章, 旅行指南, Jack旅遊"
         image="https://kevintravelsite.netlify.app/Logo.png"
         url="https://kevintravelsite.netlify.app/blog"
         type="website"

@@ -48,7 +48,7 @@ const BlogDetail = () => {
       date: "2023年11月12日",
       readTime: "閱讀時間 8 分鐘",
       rating: 4.9,
-      author: "Kevin ",
+      author: "Jack ",
       authorImage: "",    
       content: `
                 <h2 style="font-size: 28px; font-weight: bold;">Alexmarquez73</h2>
@@ -102,10 +102,60 @@ const BlogDetail = () => {
       date: "2024年10月06日",
       readTime: "閱讀時間 6 分鐘",
       rating: 4.8,
-      author: "Kevin",
+      author: "Jack",
       authorImage: "https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=100&q=80",
       content: `
          
+     
+        <h2 style="font-size: 28px; font-weight: bold;">抵達成田機場之後往鐵道方向</h2>
+         <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1762657451/20231008_114744_wrewi3.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+          <h2 style="font-size: 28px; font-weight: bold;">搭乘往羽田空港的電車往東京市區</h2>
+         <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1762657810/20231008_120006_luhy8l.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+           <h2 style="font-size: 28px; font-weight: bold;">在淺草站下車到淺草寺</h2>
+         <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1762658054/20231008_154402_b96nn7.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+          <h2 style="font-size: 28px; font-weight: bold;">往東京車站</h2>
+         <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1762658643/20241005_210426_jlx1hk.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+  
+
+           <h2 style="font-size: 28px; font-weight: bold;">事先在klook購買好新幹線車票找到可以讀取QR CODE的機器</h2>
+          <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1762658976/20241005_170030_fto4fp.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 800px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+              <h2 style="font-size: 28px; font-weight: bold;">兌換往宇都公車票</h2>
+              <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1762659084/20241005_174723_db9etr.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+  
+                 <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1762659296/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2_2025-11-09_113954_bcszhk.png" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+              
+                            <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1762659784/20241006_073040_0_aakimf.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+                                      <h2 style="font-size: 28px; font-weight: bold;">往仙台的新幹線</h2>
+                            <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1762659730/20241006_073300_cgrbgm.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 1000px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+                                  <h2 style="font-size: 28px; font-weight: bold;">抵達宇都宮站</h2>
+                            <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1762659931/20241006_083809_wnmlvc.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 1000px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+
+                               <h2 style="font-size: 28px; font-weight: bold;">出口後在東口出集合搭乘巴士前往賽道</h2>
+                            <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1762659931/20241006_083809_wnmlvc.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 1000px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+                                <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1762660481/20241006_085420_w1eold.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 1000px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+                               <h2 style="font-size: 28px; font-weight: bold;">車票可事先在網站購買:https://motegi88.com/yoyaku/index_en.php</h2>
+
+
+
+                               <h2 style="font-size: 28px; font-weight: bold;">在本田博物館下車</h2>
+                                 <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1762660620/20241006_100755_bezjqs.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 800px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+                                   <h2 style="font-size: 28px; font-weight: bold;">回程巴士集合位置</h2>
+                                 <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1762660621/20241006_100734_c31vmm.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height: 1000px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+ 
 
          <h2 style="font-size: 28px; font-weight: bold;"> Marc Márquez</h2>
        <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1747273620/37_t8fp1x.png" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
@@ -158,9 +208,21 @@ const BlogDetail = () => {
       date: "2025年09月27日",
       readTime: "閱讀時間 6 分鐘",
       rating: 4.8,
-      author: "Kevin",
+      author: "Jack",
       authorImage: "https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=100&q=80",
       content: `
+
+
+
+            <h2 style="font-size: 28px; font-weight: bold;">抵達關西機場後往2樓鐵道方向</h2>
+                            <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756997174/20250228_123531_vvivoy.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height:800px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+                             <h2 style="font-size: 28px; font-weight: bold;">搭乘南海本線急行電車往難波，直接刷IC卡進站不要搭到rapit的特急列車</h2>
+                            <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756997665/20250228_134513_pk2fnl.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height:800px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+
+
+                             <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756997685/20250228_134907_w6guqq.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height:800px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
         <p>參與無人機數量： 約 2,500 架
 
 其中 1,749 架無人機 組成了「巨大的樹」造型，象徵「生命、連結與再生」。</p>
@@ -207,17 +269,12 @@ const BlogDetail = () => {
           <p> 第二幕：《人》（Humanity）
 → 無人機組成巨大人形，象徵人類誕生與創造力的覺醒。</p>
 
- <video 
-            src="https://res.cloudinary.com/dtbj43yha/video/upload/v1759929912/20250927_194223_wtq7me.mp4" 
-            controls 
-            style="width: 100%; max-width: 400px; height: auto; border-radius: 8px; object-fit: contain;"
-            preload="metadata"
-            controlsList="nodownload"
-            playsInline
-          >
-            您的瀏覽器不支援影片播放。
-          </video>
+ 
+   <h2 style="font-size: 28px; font-weight: bold;">在天下茶屋站搭乘南海本線急行電車往關西機場，直接刷IC卡進站不要搭到rapit的特急列車</h2>
+                            <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1762662717/20250228_144100_w4ojgm.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height:800px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
 
+                            <h2 style="font-size: 28px; font-weight: bold;">搭乘16:57空港急行往關西空港預計40分左右</h2>
+                               <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1762662717/20250302_165023_xer0o5.jpg" alt="東南亞隱藏寶藏" style="width: 100%; height:800px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
         </div>
       ` 
     },
@@ -296,9 +353,9 @@ const BlogDetail = () => {
       
       {/* SEO Head */}
       <SEOHead
-        title={`${post.title} - Kevin旅遊`}
+        title={`${post.title} - Jack旅遊`}
         description={post.excerpt}
-        keywords={`${post.category}, 旅遊, ${post.title}, Kevin旅遊`}
+        keywords={`${post.category}, 旅遊, ${post.title}, Jack旅遊`}
         image={post.image}
         url={`https://kevintravelsite.netlify.app/blog/${post.id}`}
         type="article"
@@ -309,7 +366,7 @@ const BlogDetail = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link to="/" className="text-2xl font-bold text-sky-600">Kevin攝影</Link>
+              <Link to="/" className="text-2xl font-bold text-sky-600">Jack旅遊</Link>
             </div>
             <div className="flex items-center space-x-4">
               <Link 

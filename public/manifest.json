@@ -1,7 +1,7 @@
 {
-  "name": "Kevin旅遊 - 探索世界各地旅行指南",
-  "short_name": "Kevin旅遊",
-  "description": "Kevin的旅遊部落格，分享東南亞、歐洲、日本等地的旅行經驗、美食文化、攝影作品和實用旅遊指南。",
+  "name": "Jack旅遊 - 探索世界各地旅行指南",
+  "short_name": "Jack旅遊",
+  "description": "Jack的旅遊部落格，分享東南亞、歐洲、日本等地的旅行經驗、美食文化、攝影作品和實用旅遊指南。",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
