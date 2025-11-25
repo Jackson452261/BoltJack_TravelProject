@@ -12,7 +12,9 @@ import {
   Facebook,
   Twitter,
   Instagram,
-  Youtube
+  Youtube,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SEOHead from './SEOHead';
@@ -37,6 +39,56 @@ const BlogDetail = () => {
     };
   }, []);
 
+  // Carousel state and data
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const carouselImages = [
+    {
+      id: 1,
+      url: "https://images.pexels.com/photos/1371360/pexels-photo-1371360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      title: "Mountain Adventure",
+      description: "Explore breathtaking mountain landscapes"
+    },
+    {
+      id: 2,
+      url: "https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      title: "Ocean Paradise",
+      description: "Discover pristine beaches and crystal waters"
+    },
+    {
+      id: 3,
+      url: "https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      title: "City Lights",
+      description: "Experience vibrant urban adventures"
+    },
+    {
+      id: 4,
+      url: "https://images.pexels.com/photos/1450340/pexels-photo-1450340.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      title: "Forest Escape",
+      description: "Find peace in nature's embrace"
+    },
+    {
+      id: 5,
+      url: "https://images.pexels.com/photos/1591056/pexels-photo-1591056.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      title: "Desert Journey",
+      description: "Adventure through endless horizons"
+    }
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+  };
+
+  // Auto-advance carousel
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   // Blog posts data (same as in HomePage)
   const blogPosts = [
     {
@@ -52,7 +104,7 @@ const BlogDetail = () => {
       authorImage: "",    
       content: `
                 <h2 style="font-size: 28px; font-weight: bold;">Alexmarquez73</h2>
-        <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756132852/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2_2025-08-25_224404_u37xjz.png" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
+        <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756132852/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2_2025-08-25_224404_u37xjz.png" alt="東南亞隱藏寶藏" style="width: 150%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
 
        
         <img src="https://res.cloudinary.com/dtbj43yha/image/upload/v1756132850/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2_2025-08-25_224408_vtet71.png" alt="東南亞隱藏寶藏" style="width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" />
@@ -417,6 +469,91 @@ const BlogDetail = () => {
                 <Star className="h-4 w-4 mr-2 text-yellow-400 fill-current" />
                 {post.rating}
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Travel Inspiration Carousel */}
+      <section className="relative bg-gray-50 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Travel Inspiration</h2>
+            <p className="text-lg text-gray-600">Discover amazing destinations around the world</p>
+          </div>
+          
+          <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
+            {/* Carousel Images */}
+            <div className="relative h-full">
+              {carouselImages.map((image, index) => (
+                <motion.div
+                  key={image.id}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${
+                    index === currentSlide ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: index === currentSlide ? 1 : 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <img
+                    src={image.url}
+                    alt={image.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+                  
+                  {/* Content Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center text-white px-4">
+                      <motion.h3
+                        className="text-4xl font-bold mb-4"
+                        initial={{ y: 30, opacity: 0 }}
+                        animate={{ y: index === currentSlide ? 0 : 30, opacity: index === currentSlide ? 1 : 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                      >
+                        {image.title}
+                      </motion.h3>
+                      <motion.p
+                        className="text-xl text-gray-200"
+                        initial={{ y: 30, opacity: 0 }}
+                        animate={{ y: index === currentSlide ? 0 : 30, opacity: index === currentSlide ? 1 : 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                      >
+                        {image.description}
+                      </motion.p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+            
+            {/* Dots Indicator */}
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
+              {carouselImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentSlide
+                      ? 'bg-white scale-125'
+                      : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </div>
