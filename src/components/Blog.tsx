@@ -104,21 +104,19 @@ const Blog = ({ showBackToHome = false }: BlogProps) => {
                 <motion.div
                   key={post.id}
                   className={`absolute inset-0 transition-opacity duration-1000 ${
-                    index === currentSlide ? 'opacity-100' : 'opacity-0'
+                    index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
                   }`}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: index === currentSlide ? 1 : 0 }}
                   transition={{ duration: 0.8 }}
                 >
-                  <Link to={`/blog/${post.id}`}>
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-full object-cover cursor-pointer"
-                      onContextMenu={(e) => e.preventDefault()}
-                    />
-                  </Link>
-                  <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover"
+                    onContextMenu={(e) => e.preventDefault()}
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 pointer-events-none"></div>
                   
                   {/* Content Overlay */}
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -190,19 +188,19 @@ const Blog = ({ showBackToHome = false }: BlogProps) => {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm z-20"
             >
               <ChevronLeft className="h-6 w-6" />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm z-20"
             >
               <ChevronRight className="h-6 w-6" />
             </button>
             
             {/* Dots Indicator */}
-            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
               {blogPosts.map((_, index) => (
                 <button
                   key={index}
