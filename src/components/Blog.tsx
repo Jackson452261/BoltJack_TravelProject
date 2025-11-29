@@ -5,6 +5,20 @@ import { ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SEOHead from './SEOHead';
 import Navbar from './Navbar';
+import { client, urlFor, blogPostsQuery } from '../lib/sanity';
+
+// Sanity post type
+interface SanityPost {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  excerpt: string;
+  image: any;
+  category: string;
+  date: string;
+  readTime: string;
+  rating: number;
+}
 
 // 部落格文章資料
 const blogPosts = [
@@ -38,6 +52,7 @@ const blogPosts = [
       readTime: "閱讀時間 12 分鐘",
       rating: 5.0
     },
+      
     
   ];
 
@@ -48,14 +63,46 @@ interface BlogProps {
 const Blog = ({ showBackToHome = false }: BlogProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [sanityPosts, setSanityPosts] = useState<SanityPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch posts from Sanity
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const posts = await client.fetch(blogPostsQuery);
+        setSanityPosts(posts);
+      } catch (error) {
+        console.error('Error fetching posts from Sanity:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPosts();
+  }, []);
+
+  // Combine Sanity posts with fallback posts
+  const allPosts = [
+    ...sanityPosts.map(post => ({
+      id: post.slug?.current || post._id,
+      title: post.title,
+      excerpt: post.excerpt || '',
+      image: post.image ? urlFor(post.image).width(800).url() : '',
+      category: post.category || '',
+      date: post.date || '',
+      readTime: post.readTime || '',
+      rating: post.rating || 0,
+    })),
+    ...blogPosts,
+  ];
 
   // Carousel functions
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % blogPosts.length);
+    setCurrentSlide((prev) => (prev + 1) % allPosts.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + blogPosts.length) % blogPosts.length);
+    setCurrentSlide((prev) => (prev - 1 + allPosts.length) % allPosts.length);
   };
 
   // Auto-advance carousel
@@ -100,7 +147,7 @@ const Blog = ({ showBackToHome = false }: BlogProps) => {
           <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
             {/* Carousel Images */}
             <div className="relative h-full">
-              {blogPosts.map((post, index) => (
+              {allPosts.map((post, index) => (
                 <motion.div
                   key={post.id}
                   className={`absolute inset-0 transition-opacity duration-1000 ${
@@ -201,7 +248,7 @@ const Blog = ({ showBackToHome = false }: BlogProps) => {
             
             {/* Dots Indicator */}
             <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
-              {blogPosts.map((_, index) => (
+              {allPosts.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
@@ -218,7 +265,7 @@ const Blog = ({ showBackToHome = false }: BlogProps) => {
       </section>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {blogPosts
+        {allPosts
           .filter((post) =>
             post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
             post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())

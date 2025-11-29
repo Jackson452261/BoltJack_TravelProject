@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { client, urlFor, blogPostsQuery } from '../lib/sanity';
+import { PortableText } from '@portabletext/react';
 import { 
   ArrowLeft, 
   Calendar, 
@@ -20,8 +22,72 @@ import { motion } from 'framer-motion';
 import SEOHead from './SEOHead';
 
 
+// Sanity content types
+interface SanityPost {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  excerpt: string;
+  image: any;
+  category: string;
+  date: string;
+  readTime: string;
+  rating: number;
+  author: {
+    name: string;
+    image: any;
+    role: string;
+  };
+  content: any[];
+}
+
+// PortableText components for rendering Sanity content
+const portableTextComponents = {
+  types: {
+    image: ({ value }: any) => {
+      return (
+        <figure style={{ margin: '20px 0', textAlign: 'center' }}>
+          {value.caption && (
+            <figcaption style={{ fontSize: '32px', fontWeight: 'bold', marginBottom: '12px', color: '#1f2937', textAlign: 'center' }}>
+              {value.caption}
+            </figcaption>
+          )}
+          <img
+            src={urlFor(value).width(2000).url()}
+            alt={value.alt || ''}
+            style={{ width: '100%', height: 'auto', minHeight: '400px', maxHeight: '800px', objectFit: 'contain', borderRadius: '8px' }}
+          />
+        </figure>
+      );
+    },
+    videoEmbed: ({ value }: any) => (
+      <div style={{ margin: '20px 0', textAlign: 'center' }}>
+        <video
+          src={value.url}
+          controls
+          style={{ width: '100%', maxWidth: '400px', height: 'auto', borderRadius: '8px', objectFit: 'contain' }}
+          preload="metadata"
+          controlsList="nodownload"
+          playsInline
+        >
+          您的瀏覽器不支援影片播放。
+        </video>
+        {value.caption && <p>{value.caption}</p>}
+      </div>
+    ),
+  },
+  block: {
+    h1: ({ children }: any) => <h1 style={{ fontSize: '32px', fontWeight: 'bold', marginBottom: '16px' }}>{children}</h1>,
+    h2: ({ children }: any) => <h2 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '14px' }}>{children}</h2>,
+    h3: ({ children }: any) => <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '12px' }}>{children}</h3>,
+    normal: ({ children }: any) => <p style={{ marginBottom: '16px', lineHeight: '1.8' }}>{children}</p>,
+  },
+};
+
 const BlogDetail = () => {
   const { id } = useParams();
+  const [sanityPosts, setSanityPosts] = useState<SanityPost[]>([]);
+  const [loading, setLoading] = useState(true);
 
   // Prevent right-click on all images
   useEffect(() => {
@@ -89,7 +155,22 @@ const BlogDetail = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // Blog posts data (same as in HomePage)
+  // Fetch posts from Sanity
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const posts = await client.fetch(blogPostsQuery);
+        setSanityPosts(posts);
+      } catch (error) {
+        console.error('Error fetching posts from Sanity:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPosts();
+  }, []);
+
+  // Blog posts data (same as in HomePage) - fallback
   const blogPosts = [
     {
       id: 1,
@@ -330,11 +411,41 @@ const BlogDetail = () => {
         </div>
       ` 
     },
+      
     
   ];
 
 
-  const post = blogPosts.find(p => p.id === parseInt(id || '1'));
+  // Try to find post from Sanity first, then fallback to hardcoded
+  const sanityPost = sanityPosts.find(p => p.slug?.current === id || p._id === id);
+  const fallbackPost = blogPosts.find(p => p.id === parseInt(id || '1'));
+  
+  // Use Sanity post if available
+  const isSanityPost = !!sanityPost;
+  const post = sanityPost ? {
+    id: sanityPost._id,
+    title: sanityPost.title,
+    excerpt: sanityPost.excerpt || '',
+    image: sanityPost.image ? urlFor(sanityPost.image).width(1200).url() : '',
+    category: sanityPost.category || '',
+    date: sanityPost.date || '',
+    readTime: sanityPost.readTime || '',
+    rating: sanityPost.rating || 0,
+    author: sanityPost.author?.name || 'Jack',
+    authorImage: sanityPost.author?.image ? urlFor(sanityPost.author.image).width(100).url() : '',
+    content: sanityPost.content,
+  } : fallbackPost;
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sky-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">載入中...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!post) {
     return (
@@ -578,10 +689,13 @@ const BlogDetail = () => {
           </div>
 
           {/* Article Body */}
-          <div 
-            className="prose prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          <div className="prose prose-lg max-w-none">
+            {isSanityPost && Array.isArray(post.content) ? (
+              <PortableText value={post.content} components={portableTextComponents} />
+            ) : (
+              <div dangerouslySetInnerHTML={{ __html: post.content as string }} />
+            )}
+          </div>
 
           {/* Social Share */}
           <div className="mt-12 pt-8 border-t border-gray-200">
